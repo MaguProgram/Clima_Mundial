@@ -8,39 +8,61 @@ document.getElementById("botonBusqueda").addEventListener("click", () => {
     const ciudad = document.getElementById("ciudadEntrada").value
     if (ciudad) {
         fetchdatosClima(ciudad)
+    } else {
+        alert("Ingrese una ciudad")
     }
+})
 
-    function fetchdatosClima(ciudad) {
-        fetch(`${urlBase}?q=${ciudad}&appid=${api_key}`)
-            .then(data => data.json())
-            .then(data => mostrarDatosClima(data))
-    }
+function fetchdatosClima(ciudad) {
+    fetch(`${urlBase}?q=${ciudad}&appid=${api_key}`)
+        .then(data => data.json())
+        .then(data => mostrarDatosClima(data))
+}
 
 
-    function mostrarDatosClima(data) {
-        console.log(data)
-        const divDatosClima = document.getElementById("datosClima")
-        divDatosClima.innerHTML = ''
+function mostrarDatosClima(data) {
+    const divDatosClima = document.getElementById("datosClima")
+    divDatosClima.innerHTML = ''
 
-        const ciudadNombre = data.name
-        const temperatura = data.main.temp
-        const descripcion = data.weather[0].descripcion
+    const ciudadNombre = data.name
+    const pais = data.sys.country
+    const temperatura = data.main.temp
+    const humedad = data.main.humidity
+    const viento = data.wind.speed
+    const icono = data.weather[0].icon
+    const descripcion = data.weather[0].description
 
-        const ciudadTitulo = document.createElement("h2")
-        ciudadTitulo.textContent = ciudadNombre
+    const ciudadTitulo = document.createElement("h2")
+    ciudadTitulo.textContent = ciudadNombre
 
-        const temperaturaInfo = document.createElement("p")
-        temperaturaInfo.textContent = `Temperatura: ${temperatura - gradosKelvin}°C`
+    const paisTitulo = document.createElement("h2")
+    paisTitulo.textContent = "Pais: " + pais
 
-        const descripcionInfo = document.createElement("p")
-        descripcionInfo.textContent = `Descripción meteorologica: ${descripcion}`
+    const temperaturaInfo = document.createElement("p")
+    temperaturaInfo.textContent = `Temperatura: ${Math.floor(temperatura - gradosKelvin)}°C`
 
-        // Agregamos los elementos al div
-        divDatosClima.appendChild(ciudadTitulo)
-        divDatosClima.appendChild(temperaturaInfo)
-        divDatosClima.appendChild(descripcionInfo)
+    const humedadInfo = document.createElement("p")
+    humedadInfo.textContent = "Humedad: " + humedad + "%"
 
-    }
+    const vientoInfo = document.createElement("p")
+    vientoInfo.textContent = "Velocidad del viento: " + viento + " km/h"
+
+    const iconoInfo = document.createElement("img")
+    iconoInfo.src = `https://openweathermap.org/img/wn/${icono}@2x.png`
+
+    const descripcionInfo = document.createElement("p")
+    descripcionInfo.textContent = `Descripción meteorologica: ${descripcion}`
+
+    // Agregamos los elementos al div
+    divDatosClima.appendChild(ciudadTitulo)
+    divDatosClima.appendChild(paisTitulo)
+    divDatosClima.appendChild(temperaturaInfo)
+    divDatosClima.appendChild(humedadInfo)
+    divDatosClima.appendChild(vientoInfo)
+    divDatosClima.appendChild(iconoInfo)
+    divDatosClima.appendChild(descripcionInfo)
+
+}
 
 
 

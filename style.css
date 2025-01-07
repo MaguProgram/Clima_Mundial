@@ -1,38 +1,45 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f3f3f3;
-  }
-  
-  .contenedor {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    color: #333333;
-  }
-  
-  input[type="text"] {
-    padding: 10px;
-    font-size: 16px;
-    width: 70%;
-  }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: #ffffff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  #datosClima {
-    margin-top: 20px;
-    font-size: 18px;
-  }
-  
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+}
+
+.contenedor {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #2393c385;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #060984;
+  font-size: 60px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  width: 70%;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: solid 2px black;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+#datosClima {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.imagen {
+  width: 30%;
+  height: 30%;
+  float: right;
+}
